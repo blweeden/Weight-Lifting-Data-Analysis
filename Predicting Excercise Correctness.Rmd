@@ -14,7 +14,7 @@ data2 <- read.csv("trimmed_data.csv")
 ```
 
 ###Abstract
-The goal of this analysis is to use data collected from wearable tech devices to predict whether certain excercieses are performed correctly or not.  A random forest model was constructed on the origincal training data.  Out of sample accuracy was estimated to be 99.32%.  The model was run against a validation data set of 20 samples (the test set from the assignment), and the model correctly predicted all 20.
+The goal of this analysis is to use data collected from wearable tech devices to predict whether certain excercises are performed correctly or not.  A random forest model was constructed on the original training data.  Out of sample accuracy was estimated to be 99.32%.  The model was run against a validation data set of 20 samples (the test set from the assignment), and the model correctly predicted all 20.
 
 ###The Data
 The data that was used for this assignment was collected from sensors that were placed on weight lifters.  The weight lifters were then told to do a weight lifting excercise in one of five ways: correctly, and four common beginner errors.  The original dataset is available at  http://groupware.les.inf.puc-rio.br/har.
@@ -30,7 +30,7 @@ qplot(classe, yaw_arm, data=data2, xlab="Outcome")+geom_boxplot()
 The outcomes are split into five classes, A-E.  A is the correct way of doing the excercise, and B-E are each classificatons of an incorrect way.  You can see from the charts that the belt sensors may be supplying more information than the arm sensors, based on seeing the spread between class A and the other classes in the median of the data.  You can also see that the roll sensors may supply more information than the yaw sensors.  The random forest modeling approach does afford an automatic way to select and rank the predictors, so we'll find out below whether those observations are corroborated by the model.
 
 ###Data Cleanup
-We reomved the first 8 variables as they do not appear to be valid predictors.  The first 7 are timestamps or user names, and the eighth is a window number that does not correlate with the classe variable.  Generated statistic features can probably be dropped, as they can be recalculated if needed in preprocessing.  Also, many of the generated statistic columns were missing data in the dataset, or contained data that was difficult to use. Therefore, all averages, standard deviations, variance, kurtosis, and skewness columns were dropped from the data set.  In the end, the data set was trimmed from 160 to 54 data elements.  Here's a sampling of the data:
+We removed the first 8 variables as they do not appear to be valid predictors.  The first 7 are timestamps or user names, and the eighth is a window number that does not correlate with the classe variable.  Generated statistic features can probably be dropped, as they can be recalculated if needed in preprocessing.  Also, many of the generated statistic columns were missing data in the dataset, or contained data that was difficult to use. Therefore, all averages, standard deviations, variance, kurtosis, and skewness columns were dropped from the data set.  In the end, the data set was trimmed from 160 to 54 data elements.  Here's a sampling of the data:
 ```{r}
 head(data2)
 ```
