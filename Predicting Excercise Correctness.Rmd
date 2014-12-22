@@ -59,7 +59,7 @@ varImpPlot(rf_model$finalModel, n.var=15, main="Variable Importance Plot")
 Based on this plot, it appears that the most important sensors are those on the belt.  You can see that the roll, yaw, and pitch of the belt are all in the top five most important predictors.  
 
 ###Cross Validation
-Because the assignment called for it, we also built a separate model to try more traditional cross validation.  This model was run against 60% of the data set, holding back 40% for testing.  The model estimated an out-of-bag accuracy of 98.67%.  Here are the stats for the model:
+As an academic excercise, we also built a separate model to try more traditional cross validation.  This model was run against 60% of the data set, holding back 40% for testing.  The model estimated an out-of-bag accuracy of 98.67%.  Here are the stats for the model:
 ```{r}
 rf_mod_cv
 ```
@@ -68,6 +68,8 @@ A confusion matrix was used to verify the out of sample accuracy rate on the 40%
 ```{r}
 confusionMatrix(predict(rf_mod_cv, testing), testing$classe)
 ```
+
+I attribute the more conservative error estimate given by the random forest package in R to having been trained on a subset of the data rather than the entire dataset.  However, the estimate obtained by testing on the held back data matched quite closely with the estimate from the original random forest which had been trained on the full data set.
 
 ##Conclusion
 The random forest model was able to accuratly predict the way in which the excercises were performed.  It was possible to build an accurate model without pre-processing the data, and without an intimate understanding of the data itself.  However, our first attempt to create a random forest model (not described above) utilized all the variables in the data set as possible predictors.  This model only produced an out of sample accuracy estimate of about 70%, and so was not used. So, we found that the removal of clearly unnessary variables was important to the construction of an accurate random forest model.

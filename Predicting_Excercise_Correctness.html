@@ -106,7 +106,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="cross-validation" class="section level3">
 <h3>Cross Validation</h3>
-<p>Because the assignment called for it, we also built a separate model to try more traditional cross validation. This model was run against 60% of the data set, holding back 40% for testing. The model estimated an out-of-bag accuracy of 98.67%. Here are the stats for the model:</p>
+<p>As an academic excercise, we also built a separate model to try more traditional cross validation. This model was run against 60% of the data set, holding back 40% for testing. The model estimated an out-of-bag accuracy of 98.67%. Here are the stats for the model:</p>
 <pre class="r"><code>rf_mod_cv</code></pre>
 <pre><code>## Random Forest 
 ## 
@@ -161,6 +161,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## Detection Rate         0.2843   0.1912   0.1723   0.1614   0.1826
 ## Detection Prevalence   0.2858   0.1922   0.1760   0.1630   0.1830
 ## Balanced Accuracy      0.9988   0.9934   0.9919   0.9912   0.9966</code></pre>
+<p>I attribute the more conservative error estimate given by the random forest package in R to having been trained on a subset of the data rather than the entire dataset. However, the estimate obtained by testing on the held back data matched quite closely with the estimate from the original random forest which had been trained on the full data set.</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
